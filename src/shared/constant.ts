@@ -1,4 +1,4 @@
-const createKey = <T extends string>(key: T) => `${import.meta.env.VITE_PREFIX}_${key}` as const
+const createKey = <T extends string>(key: T) => `${import.meta.env.VITE_PREFIX}_h5_${key}` as const
 
 /** 用户凭证 */
 export const TOKEN_KEY = createKey('token')

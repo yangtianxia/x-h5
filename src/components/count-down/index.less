@@ -1,0 +1,16 @@
+@count-down-cls: ~'@{prefix}-count-down';
+
+.@{count-down-cls} {
+  color: var(--color-text-base);
+  vertical-align: top;
+
+  &.van-button--default {
+    border: none;
+    background-color: transparent;
+
+    &.van-button--mini {
+      padding: 0;
+      font-size: var(--size-sm);
+    }
+  }
+}

@@ -33,27 +33,27 @@ export default defineComponent({
   name,
   setup() {
     return () => (
-      <div class={bem()}>
-        <Tabbar
-          route
-          placeholder
-          safe-area-inset-bottom
-          border={false}
-          inactiveColor={getCSSVar('text-base')}
-        >
-          {tabbarList.map((item) => (
-            <TabbarItem
-              name={item.name}
-              to={item.to}
-              v-slots={{
-                icon: ({ active }: { active: boolean }) => (
-                  <Icon name={active ? item.selectedIcon : item.icon} />
-                )
-              }}
-            >{item.title}</TabbarItem>
-          ))}
-        </Tabbar>
-      </div>
+      <Tabbar
+        route
+        placeholder
+        safe-area-inset-bottom
+        class={bem()}
+        border={false}
+        zIndex={9901}
+        inactiveColor={getCSSVar('text-base')}
+      >
+        {tabbarList.map((item) => (
+          <TabbarItem
+            name={item.name}
+            to={item.to}
+            v-slots={{
+              icon: ({ active }: { active: boolean }) => (
+                <Icon name={active ? item.selectedIcon : item.icon} />
+              )
+            }}
+          >{item.title}</TabbarItem>
+        ))}
+      </Tabbar>
     )
   }
 })

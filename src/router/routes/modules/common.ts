@@ -27,7 +27,7 @@ const COMMON: RouteRecordRaw = {
       component: () => import('@/views/my'),
       meta: {
         title: '我的',
-        requiresAuth: false,
+        requiresAuth: true,
         tabbar: true
       }
     },

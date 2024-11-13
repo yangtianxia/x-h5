@@ -7,7 +7,10 @@ import { RouterView } from 'vue-router'
 // Components
 import { ConfigProvider } from 'vant'
 
+const [name] = BEM('app')
+
 export default defineComponent({
+  name,
   setup() {
     return () => (
       <ConfigProvider

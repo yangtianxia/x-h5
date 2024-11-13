@@ -7,7 +7,7 @@ import VueJSX from '@vitejs/plugin-vue-jsx'
 import Legacy from '@vitejs/plugin-legacy'
 import Inject from '@rollup/plugin-inject'
 import { pick } from '@txjs/shared'
-import { createStyleImportPlugin } from 'vite-plugin-style-import'
+import Imp from 'vite-plugin-imp'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import ejs from 'ejs'
 import { version } from './package.json'
@@ -17,7 +17,7 @@ const resolve = (path: string) => {
   return fileURLToPath(new URL(path, import.meta.url))
 }
 
-const getVantAPIMap = () => {
+const getVantApiMap = () => {
   const apiMap = new Map<string, string>()
 
   const api = {
@@ -59,7 +59,7 @@ const getVantAPIMap = () => {
 export default defineConfig(({ mode }) => {
   const isDev = mode === 'development'
   const env = loadEnv(mode, process.cwd())
-  const apiMap = getVantAPIMap()
+  const vantApi = getVantApiMap()
 
   return {
     server: {
@@ -111,8 +111,7 @@ export default defineConfig(({ mode }) => {
               'van-popup',
             ],
             border: true,
-            mobileUnit: 'vw',
-            exclude: [/.html/]
+            mobileUnit: 'vw'
           }),
           Autoprefixer()
         ]
@@ -130,14 +129,14 @@ export default defineConfig(({ mode }) => {
       Inject({
         BEM: '@txjs/bem'
       }),
-      createStyleImportPlugin({
-        resolves: [
+      Imp({
+        libList: [
           {
-            libraryName: 'vant',
-            libraryNameChangeCase: 'paramCase',
-            resolveStyle: name => {
-              if (apiMap.has(name)) {
-                name = apiMap.get(name)!
+            libName: 'vant',
+            replaceOldImport: false,
+            style: (name) => {
+              if (vantApi.has(name)) {
+                name = vantApi.get(name)!
               }
               return `vant/es/${name}/style`
             }

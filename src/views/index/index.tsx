@@ -1,16 +1,21 @@
 // Vue
 import { defineComponent } from 'vue'
 
+// Components
+import { App } from '@/components/app'
+
 // Style
 import style from './index.module.less'
 
-const [name, bem] = BEM('index', style)
+const [name] = BEM('index', style)
 
 export default defineComponent({
   name,
   setup() {
     return () => (
-      <div class={bem()}></div>
+      <App>
+        <App.Body></App.Body>
+      </App>
     )
   }
 })

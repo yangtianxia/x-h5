@@ -1,0 +1,109 @@
+:global {
+  body.login {
+    background-color: var(--color-white);
+  }
+}
+
+.login {
+  box-sizing: border-box;
+  flex: 1 0;
+  padding: 16% 9% 0;
+
+  &__upper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--size-9);
+
+    &-title {
+      color: var(--color-text);
+      font-size: var(--size-5);
+      font-weight: var(--weight-bold);
+      line-height: var(--line-md);
+      letter-spacing: 0.5px;
+      margin-top: var(--size-3);
+    }
+
+    &-desc {
+      color: var(--color-text-light);
+      font-size: var(--size-sm);
+      font-weight: var(--weight-medium);
+      line-height: var(--line-xs);
+      margin-top: var(--size-1);
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-grey-2);
+    overflow: hidden;
+  }
+
+  &__form {
+    --van-cell-background: var(--color-bgcolor);
+
+    :global {
+      .van-field {
+        border-radius: var(--radius-sm);
+
+        & + .van-field {
+          margin-top: var(--size-5);
+        }
+      }
+    }
+  }
+
+  &__agree {
+    display: flex;
+    align-items: center;
+    margin-top: var(--size-2);
+    color: var(--color-text-base);
+    font-size: var(--size-sm);
+    --van-checkbox-size: var(--size-md);
+    --van-checkbox-label-margin: 6px;
+    --van-checkbox-label-color: var(--color-text-base);
+
+    &-link {
+      color: var(--color-primary);
+
+      &:active {
+        opacity: var(--visibility-3);
+      }
+    }
+  }
+
+  &__submit {
+    margin-top: var(--size-8);
+  }
+
+  &__other {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: var(--size-3);
+
+    &-link {
+      flex: 1 0;
+      color: var(--color-primary);
+      font-size: var(--size-sm);
+      line-height: var(--line-md);
+
+      &:active {
+        opacity: var(--visibility-3);
+      }
+
+      &:nth-child(2) {
+        text-align: center;
+      }
+
+      &:nth-child(3) {
+        text-align: right;
+      }
+    }
+  }
+}

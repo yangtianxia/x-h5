@@ -47,6 +47,15 @@ export default defineConfig((config) => {
     xl: '18px'
   }
 
+  modules.radius = {
+    100: '100%',
+    sm: '2px',
+    md: '4px',
+    lg: '8px',
+    xl: '12',
+    full: '999px'
+  }
+
   modules.weight = pick(modules.weight, ['light', 'regular', 'medium', 'semibold', 'bold'])
 
   modules.visibility = {
