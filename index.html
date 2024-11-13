@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,viewport-fit=cover" />
+    <link rel="icon" href="%BASE_URL%favicon.ico">
+    <style type="text/css">
+      :root {
+        --loader-bounce-size: 14px;
+        --loader-bounce-color: var(--color-primary, rgba(0,0,0,.3));
+      }
+      .loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .loader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform-origin: 0 0;
+        transform: translate(-50%, -50%);
+        text-align: center;
+      }
+      .loader > div {
+        width: var(--loader-bounce-size);
+        height: var(--loader-bounce-size);
+        background-color: var(--loader-bounce-color);
+        border-radius: 100%;
+        display: inline-block;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+      }
+      .loader .bounce1 {
+        animation-delay: -0.32s;
+      }
+      .loader .bounce2 {
+        animation-delay: -0.16s;
+      }
+      @keyframes sk-bouncedelay {
+        0%,
+        80%,
+        100% { transform: scale(0); }
+        40% { transform: scale(1.0); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="loader-wrapper">
+        <div class="loader">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+    <noscript>
+      This website requires JavaScript to function properly.
+      Please enable JavaScript to continue.
+    </noscript>
+  </body>
+</html>

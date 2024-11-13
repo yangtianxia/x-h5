@@ -1,0 +1,89 @@
+{
+  "name": "x-mobile",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "pollen": "pollen --config pollen.config.mjs",
+    "dev": "pnpm pollen && vite",
+    "build": "vue-tsc -b && pnpm pollen && vite build",
+    "preview": "vite preview",
+    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
+    "lint": "eslint ./src --ext .ts,.tsx --fix --ignore-path .gitignore",
+    "format": "prettier --write src/"
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{less,css}": [
+      "stylelint --fix",
+      "prettier --write"
+    ]
+  },
+  "author": "yangtianxia <1304082170@qq.com>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yangtianxia/x-mobile.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yangtianxia/x-mobile/issues"
+  },
+  "homepage": "https://github.com/yangtianxia/x-mobile#readme",
+  "dependencies": {
+    "@icon-park/vue-next": "^1.4.2",
+    "@txjs/bem": "^1.0.0",
+    "@txjs/bool": "^0.1.0",
+    "@txjs/make": "^0.1.0",
+    "@txjs/shared": "^1.0.0",
+    "@txjs/types": "^1.0.0",
+    "@vant/use": "^1.6.0",
+    "axios": "^1.7.7",
+    "dayjs": "^1.11.13",
+    "extend": "^3.0.2",
+    "js-cookie": "^3.0.5",
+    "mitt": "^3.0.1",
+    "pinia": "^2.2.4",
+    "postcss-mobile-forever": "^4.2.2",
+    "qs": "^6.13.0",
+    "ua-browser": "^0.1.7",
+    "vant": "^4.9.8",
+    "vue": "^3.5.10",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@rollup/plugin-inject": "^5.0.5",
+    "@types/extend": "^3.0.4",
+    "@types/js-cookie": "^3.0.6",
+    "@types/mockjs": "^1.0.10",
+    "@types/node": "^22.7.8",
+    "@types/qs": "^6.9.16",
+    "@types/shelljs": "^0.8.15",
+    "@types/tinycolor2": "^1.4.6",
+    "@vitejs/plugin-legacy": "^5.4.2",
+    "@vitejs/plugin-vue": "^5.1.4",
+    "@vitejs/plugin-vue-jsx": "^4.0.1",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "@vue/eslint-config-typescript": "^11.0.3",
+    "@vue/tsconfig": "^0.5.1",
+    "autoprefixer": "^10.4.20",
+    "ejs": "^3.1.10",
+    "eslint": "^8.57.1",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-vue": "^9.29.1",
+    "less": "^4.2.0",
+    "less-loader": "^12.2.0",
+    "mockjs": "^1.1.0",
+    "pollen-css": "^5.0.1",
+    "prettier": "^3.3.3",
+    "shelljs": "^0.8.5",
+    "tinycolor2": "^1.6.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.8",
+    "vite-plugin-html": "^3.2.2",
+    "vite-plugin-style-import": "^2.0.0",
+    "vue-tsc": "^2.1.6"
+  }
+}

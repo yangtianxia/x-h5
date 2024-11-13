@@ -1,0 +1,57 @@
+{
+  "root": true,
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-essential",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "@vue/eslint-config-typescript",
+    "@vue/eslint-config-prettier/skip-formatting"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "import"
+  ],
+  "settings": {
+    "import/resolver": {
+      "node": true,
+      "alias": {
+        "map": [
+          ["~", "./"],
+          ["@", "./src"]
+        ],
+        "extensions": [".vue", ".ts", ".tsx"]
+      }
+    }
+  },
+  "rules": {
+    "camelcase": "off",
+    "eol-last": "error",
+    "no-unused-vars": "off",
+    "no-console": "off",
+    "no-debugger": "off",
+    "quote-props": ["off", "always"],
+    "space-before-function-paren": "off",
+    "no-unused-expressions": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-var-requires": "error",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-empty-interface": "off"
+  },
+  "globals": {
+    "BEM": "readonly",
+    "themeVars": "readonly"
+  }
+}
