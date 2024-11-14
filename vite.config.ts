@@ -64,6 +64,7 @@ export default defineConfig(({ mode }) => {
   return {
     server: {
       hmr: true,
+      host: '0.0.0.0',
       proxy: {
         [env.VITE_PROXY_API]: {
           target: env.VITE_API,

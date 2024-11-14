@@ -39,6 +39,8 @@ const getFormModel = () => ({
   telephone: makeString(),
   /** 验证码 */
   code: makeString(),
+  /** 缓存验证码间隔时间 */
+  codeInterval: 60,
   /** 同意协议 */
   agree: false
 })
@@ -76,17 +78,27 @@ export default defineComponent({
       }
     })
 
-    const currentTypeLabel = computed(() => formModel.type === 'pwd' ? '密码' : '验证码')
+    const isPwd = computed(() => formModel.type === 'pwd')
+
+    const currentTypeLabel = computed(() => isPwd.value ? '密码' : '验证码')
 
     const onSwitchLogin = () => {
-      formModel.type = formModel.type === 'pwd' ? 'sms' : 'pwd'
+      formModel.type = isPwd.value ? 'sms' : 'pwd'
+    }
+
+    const onSubmit = async () => {
+      if (formModel.loading) return
+
+      if (!formModel.agree) {
+        showToast('请先阅读并勾选协议')
+        return
+      }
+
+      formModel.loading = true
     }
 
     const renderPwd = () => (
-      <div
-        v-show={formModel.type === 'pwd'}
-        class={bem('pwd')}
-      >
+      <>
         <Form.Field
           v-model={formModel.username}
           name="username"
@@ -100,14 +112,11 @@ export default defineComponent({
           border={false}
           placeholder="请输入密码"
         />
-      </div>
+      </>
     )
 
     const renderSms = () => (
-      <div
-        v-show={formModel.type === 'sms'}
-        class={bem('sms')}
-      >
+      <>
         <Form.Field
           v-model={formModel.telephone}
           type="tel"
@@ -123,10 +132,12 @@ export default defineComponent({
           maxlength={6}
           placeholder="请输入验证码"
           v-slots={{
-            button: () => <CountDown />
+            button: () => (
+              <CountDown interval={formModel.codeInterval} />
+            )
           }}
         />
-      </div>
+      </>
     )
 
     return () => (
@@ -147,10 +158,16 @@ export default defineComponent({
             ref={formRef}
             rules={formRules}
             scrollToError
+            validateFirst={false}
             showErrorMessage={false}
+            onFailed={({ errors }) => {
+              if (errors.length) {
+                showToast(errors[0].message)
+              }
+            }}
+            onSubmit={onSubmit}
           >
-            {renderPwd()}
-            {renderSms()}
+            {isPwd.value ? renderPwd() : renderSms()}
             <div class={bem('agree')}>
               <Checkbox v-model={formModel.agree}>我已阅读并同意</Checkbox>
               <div class={bem('agree-link')}>

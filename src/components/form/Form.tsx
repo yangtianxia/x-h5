@@ -19,7 +19,8 @@ import {
   Form,
   formProps,
   type FormInstance,
-  type FieldRule
+  type FieldRule,
+  type FieldValidateError
 } from 'vant'
 import type { FormExpose } from 'vant/es/form/types'
 
@@ -32,21 +33,15 @@ const [name] = BEM('form')
 const xFormProps = shallowMerge({}, formProps, {
   validateFirst: truthProp,
   rules: Object as PropType<Record<string, FieldRule & Rule[]>>,
-  onReset: Function as PropType<() => void>,
-  onFinish: Function as PropType<(values: Record<string, unknown>) => void>,
-  onValidate: Function as PropType<(evt: {
-    name: string,
-    message: string
+  onFailed: Function as PropType<(evt: {
+    errors: FieldValidateError[],
+    values: Record<string, unknown>
   }) => void>,
-  onSubmit: Function as PropType<(...args: any) => void>,
-  onFailed: Function as PropType<(...args: any) => void>
+  onSubmit: Function as PropType<(values: Record<string, unknown>) => void>
 })
 
 const formPropsKeys = [
-  'rules',
-  'onReset',
-  'onFinish',
-  'onValidate'
+  'rules'
 ] as const
 
 export type FormProps = ExtractPropTypes<typeof xFormProps>

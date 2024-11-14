@@ -82,9 +82,7 @@ export default defineComponent({
       }
     })
 
-    const formatText = (value: string) => {
-      return value.replace(/^\[S\](.*)?$/g, `${state.interval}$1`)
-    }
+    const formatText = (value: string) => value.replace(/^\[S\](.*)?$/g, `${state.interval}$1`)
 
     const onTap = () => {
       state.loading = true

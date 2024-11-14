@@ -38,7 +38,7 @@
     "@txjs/make": "^1.0.0",
     "@txjs/shared": "^1.0.0",
     "@txjs/types": "^1.0.0",
-    "@txjs/vant-validator": "^0.10.0",
+    "@txjs/vant-validator": "^0.10.1",
     "@vant/use": "^1.6.0",
     "axios": "^1.7.7",
     "dayjs": "^1.11.13",

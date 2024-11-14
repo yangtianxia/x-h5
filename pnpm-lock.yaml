@@ -27,8 +27,8 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       '@txjs/vant-validator':
-        specifier: ^0.10.0
-        version: 0.10.0(typescript@5.6.3)
+        specifier: ^0.10.1
+        version: 0.10.1(typescript@5.6.3)
       '@vant/use':
         specifier: ^1.6.0
         version: 1.6.0(vue@3.5.12(typescript@5.6.3))
@@ -1030,8 +1030,8 @@ packages:
   '@txjs/validator@0.0.9':
     resolution: {integrity: sha512-V2LwmmJcFf9fLwzWQugnGhY9ONbTX3nDWaZpJ3qQOa4xxn67edShyn6l5AemsG7Mr39x1xihFCBYun2dJw8mhQ==}
 
-  '@txjs/vant-validator@0.10.0':
-    resolution: {integrity: sha512-Yp7ODaGLXU+yi8ojTa0gPHjKrLeRcyRh+21BwmvJxTW4FBIGv9H0mok4g+A5BdnSvIIGFBqJ1NPwI0E9ClECQw==}
+  '@txjs/vant-validator@0.10.1':
+    resolution: {integrity: sha512-Zq0cWHZFVTm5/UBK1oMVwAfPt8J35aJKd8L/5l/5M6zIh1QI4XcN/kPMWk7qKgLLwjd6R03D276gjU6qxiEY/w==}
 
   '@types/ejs@3.1.5':
     resolution: {integrity: sha512-nv+GSx77ZtXiJzwKdsASqi+YQ5Z7vwHsTP0JY2SiQgjGckkBRKZnk8nIM+7oUZ1VCtuTz0+By4qVR7fqzp/Dfg==}
@@ -3702,7 +3702,7 @@ snapshots:
       '@txjs/bool': 0.0.8
       '@txjs/shared': 0.0.14
 
-  '@txjs/vant-validator@0.10.0(typescript@5.6.3)':
+  '@txjs/vant-validator@0.10.1(typescript@5.6.3)':
     dependencies:
       '@txjs/bool': 0.0.8
       '@txjs/shared': 0.0.14
