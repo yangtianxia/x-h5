@@ -2,7 +2,7 @@ import type { Router } from 'vue-router'
 import { setRouteEmitter } from '@/shared/route-listener'
 
 import setupUserLoginInfoGuard from './userLoginInfo'
-import setupWindowGuard from './window'
+import setupDocumentGuard from './document'
 
 function setupPageGuard(router: Router) {
   router.beforeEach(async (to) => {
@@ -14,5 +14,5 @@ function setupPageGuard(router: Router) {
 export default function createRouteGuard(router: Router) {
   setupPageGuard(router)
   setupUserLoginInfoGuard(router)
-  setupWindowGuard(router)
+  setupDocumentGuard(router)
 }

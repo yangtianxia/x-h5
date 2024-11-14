@@ -9,7 +9,7 @@ import {
 } from 'vue'
 
 // Common
-import { shallowMerge, omit } from '@txjs/shared'
+import { shallowMerge, pick } from '@txjs/shared'
 import { isPlainObject, isString } from '@txjs/bool'
 
 // Component utils
@@ -45,35 +45,33 @@ export default defineComponent({
     })
 
     const withOption = (status: ResultCode, refresh?: UnknownCallback) => {
-      const newConfig = resultStatusConfig[status]
+      const defConfig = resultStatusConfig[status]
 
-      if (!newConfig) return
+      if (!defConfig) return
 
       if (refresh && ['error', '500'].includes(status)) {
         option.desc = '别紧张，试试看刷新页面'
       }
 
-      shallowMerge(option, newConfig)
+      shallowMerge(option, defConfig)
     }
 
     const updateOption = () => {
       const currentStatus = props.status
       const currentRefresh = props.refresh
-      const newOption = omit(props, ['status', 'refresh'])
-
-      shallowMerge(option, newOption)
+      const newOption = pick(props, ['title', 'image', 'desc', 'bottom'], true)
 
       if (isPlainObject(currentStatus)) {
         const { status, refresh, ...partial } = currentStatus
-
         if (isString(status)) {
           withOption(status, refresh || currentRefresh)
         }
-
         shallowMerge(option, partial)
       } else {
         withOption(currentStatus, currentRefresh)
       }
+
+      shallowMerge(option, newOption)
     }
 
     watch(

@@ -1,6 +1,10 @@
 import type { PropType } from 'vue'
 import type { ResultStatus } from './types'
 
+const resolve = (path: string) => {
+  return new URL(`./image/${path}`, import.meta.url).href
+}
+
 export const resultSharedProps = {
   status: {
     type: [String, Object] as PropType<ResultStatus>,
@@ -10,23 +14,23 @@ export const resultSharedProps = {
 
 export const resultStatusConfig = {
   404: {
-    title: '页面接口不存在或已删除',
-    // image: require('./image/404.png')
+    title: '页面不存在或已删除',
+    image: resolve('error.svg')
   },
   500: {
     title: '抱歉，服务请求异常',
-    // image: require('./image/500.png')
+    image: resolve('error.svg')
   },
   nodata: {
     title: '暂无数据',
-    // image: require('./image/no-data.png')
+    image: resolve('nodata.svg')
   },
   network: {
     title: '网络异常，请检查设备网络连接',
-    // image: require('./image/no-network.png')
+    image: resolve('network.svg')
   },
   error: {
     title: '抱歉，访问发生错误',
-    // image: require('./image/error.png')
+    image: resolve('nodata.svg')
   }
 } as const

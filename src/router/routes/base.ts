@@ -6,5 +6,9 @@ export const DEFAULT_LAYOUT = () => import('@/layout')
 export const NOT_FOUND_ROUTE: RouteRecordRaw = {
   path: '/:pathMatch(.*)*',
   name: NOT_FOUND_ROUTE_NAME,
-  component: () => import('@/views/not-found')
+  component: () => import('@/views/not-found'),
+  meta: {
+    title: '找不到页面',
+    requiresAuth: false
+  }
 }

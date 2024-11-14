@@ -1,5 +1,5 @@
 import { withInstall } from '../_utils/with-install'
-import _Result, { type ResultProps } from './Result'
+import _Result from './Result'
 
 import './index.less'
 

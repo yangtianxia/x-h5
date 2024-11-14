@@ -3,7 +3,6 @@ import {
   defineComponent,
   computed,
   provide,
-  Transition,
   type ComputedRef,
   type ExtractPropTypes
 } from 'vue'
@@ -58,12 +57,8 @@ export default defineComponent({
     provide(APP_LOADING_KEY, () => loading.value)
     provide(APP_KEY, { loading, status })
 
-    const renderLoading = () => (
-      <Transition
-        appear
-        name="van-fade"
-        mode="out-in"
-      >
+    return () => (
+      <view class={bem()}>
         <div
           v-show={loading.value}
           class={bem('loading')}
@@ -73,12 +68,6 @@ export default defineComponent({
             {slots.loading?.() || <Loading size={26} />}
           </div>
         </div>
-      </Transition>
-    )
-
-    return () => (
-      <view class={bem()}>
-        {renderLoading()}
         {slots.default?.()}
       </view>
     )

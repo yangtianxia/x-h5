@@ -33,10 +33,9 @@ export default defineComponent({
     const { status } = app
 
     return () => {
-      const { shrink } = props
       const empty = notNil(status.value)
       return (
-        <div class={bem({ empty, shrink })}>
+        <div class={bem({ empty, shrink: props.shrink })}>
           {empty ? <Result status={status.value} /> : slots.default?.()}
         </div>
       )
